@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<script src="js/jquery-1.11.1.js"></script>
+		<script src="js/db.js"></script>
+		<script src="js/common.js"></script>
+
+
+	</head>
+
+	<body>
+		  <div id="top-header" style="margin-left:11;margin-right:11">
+    		<div id="left-subheader"><strong>Record</strong></div>
+      			<div id="right-subheader">
+      				<!--<button class="btn-topheader" id="btnpie" type="submit"><img src="img/pie.png"></img></button>
+					<button class="btn-topheader" id="btnexport" type="submit"><img src="img/csv.png"></img></button>-->
+        			<button class="btn-topheader" id="btnhome" type="submit"><img src="img/home.png"></img></button>
+      			</div>  
+  			</div><br><br>
+
+
+  			Search:<input type=text id="txtsearch"></input>&nbsp;&nbsp;
+  			<select id="cmbitem">
+  				<option>TIMESTAMP</option>
+  				<option>TYPE</option>
+  				<option>ID_NODE</option>
+  				<option>BC</option>
+  				<option>APP_TYPE</option>
+  				<option>DATA</option>
+  				<option>TXP</option>
+  				<option>NRT</option>
+  				<option>COD_RX</option>
+  				<option>STATE</option>
+  			</select>
+  			&nbsp;contains: <input name="html" type="checkbox" id="chkcon" value="html"/>
+  			<input type="button" value="search" id="btnser"></input>
+
+
+
+  			<table id="tblreport" class="tblist" style="width:100%">
+				<!--<tr id='filters'>
+					<td><input type="text" id="timestamp"></input></td>
+					<td><input type="text" id="type"></input></td>
+					<td><input type="text" id="id_node"></input></td>
+					<td><input type="text" id="bc"></input></td>
+					<td><input type="text" id="app_type"></input></td>
+					<td><input type="text" id="data"></input></td>
+					<td><input type="text" id="txp"></input></td>
+					<td><input type="text" id="nrt"></input></td>
+					<td><input type="text" id="cod_rx"></input></td>
+					<td><input type="text" id="state"></input></td>
+					</tr>
+				-->
+			</table>
+			<br><hr>
+			Page:&nbsp;<input type="text" id="numpage" value="1" size="1"></input> <div id="pagereport" style="float:right"></div>
+
+  			
+	
+	</body>
+</html

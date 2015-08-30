@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<script src="js/jquery-1.11.1.js"></script>
+		<script src="js/common.js"></script>
+
+		<script>
+			$(document).ready(function(){
+
+			 var PeriodicTx=0;
+
+		  	 $.ajax({
+  					 type: "POST",
+  					 url: "php/readTask.php",
+  					 data:JSON.stringify({"code":"1"}),
+  					 success: function(data){
+  					 	obj=JSON.parse(data);
+  					 	for(var i=0;i<obj.task.length;i++){
+  					 		if(obj.task[i]["register-name"]=="PeriodicTx")
+  					 			PeriodicTx=obj.task[i]["value"];
+  					 	}
+  					 	$("#txpvalue").append(PeriodicTx);
+      				 },
+  					 dataType:'text'
+			  });
+		
+			  $("#btnSubmit").click(function(){
+
+			  	console.log($("#txtPeriodicTx").val());
+    				$.ajax({
+  					 type: "POST",
+  					 url: "php/edit.php",
+  					 data:JSON.stringify({"PeriodicTx":$("#txtPeriodicTx").val(),"CodGateway":$("#txtCodGateway").val(),"ListenPort":$("#txtListenPort").val()}),
+  					 success: function(data){
+        				console.log(data);
+    				},
+  					 dataType: "application/json"
+				    });
+			    location.reload();
+    			}); 
+			});
+		</script>
+
+	</head>
+
+	<body>
+		  <div id="top-header" style="margin-left:11;margin-right:11">
+    		<div id="left-subheader"><strong>Dashboard</strong></div>
+      			<div id="right-subheader">
+        			<button class="btn-topheader" id="btnhome" type="submit"><img src="img/home.png"></img></button>
+      			</div>  
+  			</div><br><br>
+  				<center>
+					<h3>Configurazione dei Registri</h3>
+				</center><br><br>
+			<center>
+			<div id="edit-page">
+				 <hr>
+				 CodGateway:<input type="text" id="txtCodGateway"></input>
+				 <hr><br>
+				 <table class="tblist">
+				 	<tr>
+				 	 <th>Register</th>
+				 	 <th>Value</th>
+				 	</tr>
+				 	<tr>
+				 	 <td>PeriodicTx</td>
+				 	 <td><input type="text" id="txtPeriodicTx"></input></td>
+				 	</tr>
+				 	<tr> 
+				 	 <td>ListenPort</td>
+				 	 <td><input type="text" id="txtListenPort"></input></td>
+				 	</tr>
+				 	<tr>
+				 		<td></td>
+				 		<td><input type="submit" id="btnSubmit" value="Save"></td>
+				 	<tr>
+				 </table>
+			</div>
+		</center>
+       	</center>
+	</body>
+</html>
